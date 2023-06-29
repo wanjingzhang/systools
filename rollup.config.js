@@ -10,6 +10,8 @@ export default {
     // 打包出口
     file: pkg.browser, // 最终打包出来的文件路径和文件名，这里是在package.json的browser: 'dist/index.js'字段中配置的
     format: "umd", // umd是兼容amd/cjs/iife的通用打包格式，适合浏览器
+    name: "mmosertools", // 替换为你的包的全局变量名
+    exports: "named", // 可选值：'default', 'named', 'auto', 'none'
   },
   plugins: [
     // 打包插件
