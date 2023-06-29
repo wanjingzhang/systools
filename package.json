@@ -1,0 +1,23 @@
+{
+  "name": "systools",
+  "version": "1.0.0",
+  "description": "Foucus on string process, verfing the data input, formation date.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanjingzhang/systools.git"
+  },
+  "keywords": [
+    "tool",
+    "package"
+  ],
+  "author": "Celine Zhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wanjingzhang/systools/issues"
+  },
+  "homepage": "https://github.com/wanjingzhang/systools#readme"
+}
