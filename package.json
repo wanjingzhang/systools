@@ -1,8 +1,10 @@
 {
   "name": "systools",
   "version": "1.0.0",
-  "description": "Foucus on string process, verfing the data input, formation date.",
+  "description": "Our focus is on string processing, verifying the input data, and formatting dates.",
   "main": "index.js",
+  "browser": "dist/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +21,16 @@
   "bugs": {
     "url": "https://github.com/wanjingzhang/systools/issues"
   },
-  "homepage": "https://github.com/wanjingzhang/systools#readme"
+  "homepage": "https://github.com/wanjingzhang/systools#readme",
+  "devDependencies": {
+    "rollup": "^3.25.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^2.6.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@rollup/plugin-json": "^6.0.0"
+  }
 }
