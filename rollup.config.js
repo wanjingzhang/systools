@@ -1,23 +1,33 @@
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
+import { readFileSync } from "fs";
+import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript";
-import pkg from "./package.json" assert { type: "json" };
-import json from "@rollup/plugin-json";
+import pkg from "./package.json";
 
-export default {
-  input: "src/index.ts", // 打包入口
-  output: {
-    // 打包出口
-    file: pkg.browser, // 最终打包出来的文件路径和文件名，这里是在package.json的browser: 'dist/index.js'字段中配置的
-    format: "umd", // umd是兼容amd/cjs/iife的通用打包格式，适合浏览器
-    name: "mmosertools", // 替换为你的包的全局变量名
-    exports: "named", // 可选值：'default', 'named', 'auto', 'none'
+const packageJson = JSON.parse(readFileSync("./package.json", "utf8"));
+const pkgName = packageJson.umdModuleName;
+
+export default [
+  // UMD for browser-friendly build
+  {
+    input: "src/index.ts",
+    output: {
+      name: "ktools",
+      file: pkg.browser,
+      format: "umd",
+      exports: "auto",
+    },
+    plugins: [resolve(), commonjs(), typescript()],
   },
-  plugins: [
-    // 打包插件
-    json(),
-    resolve(), // 查找和打包node_modules中的第三方模块
-    commonjs(), // 将 CommonJS 转换成 ES2015 模块供 Rollup 处理
-    typescript(), // 解析TypeScript
-  ],
-};
+  // CommonJS for Node and ES module for bundlers build
+  {
+    input: "src/index.ts",
+    external: ["ms"],
+    plugins: [typescript()],
+    output: [
+      { file: pkg.main, format: "cjs", exports: "auto" },
+      { file: pkg.module, format: "es", exports: "auto" },
+    ],
+  },
+];

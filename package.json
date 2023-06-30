@@ -1,9 +1,13 @@
 {
   "name": "mmosertools",
-  "version": "1.0.1",
+  "version": "1.0.8",
   "description": "Our focus is on string processing, verifying the input data, and formatting dates.",
-  "main": "index.js",
   "browser": "dist/index.js",
+  "main": "dist/mmosertools.cjs.js",
+  "module": "dist/mmosertools.esm.js",
+  "umd": "dist/mmosertools.umd.js",
+  "pkgiife": "dist/mmosertools.iife.js",
+  "umdModuleName": "mmosertools",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
@@ -26,16 +30,24 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "rollup": "^3.25.3",
+    "fs": "^0.0.1-security",
+    "rollup": "^2.66.0",
+    "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.3.1",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^2.6.0",
-    "typescript": "^5.1.6"
+    "ts-node": "^9.0.0",
+    "typescript": "^5.1.6",
+    "@types/ms": "^0.7.31"
   },
   "dependencies": {
     "@rollup/plugin-json": "^6.0.0",
-    "user": "^0.0.0"
+    "user": "^0.0.0",
+    "mmosertools": "0.0.7",
+    "@types/lodash-es": "^4.17.3",
+    "lodash-es": "^4.17.15"
   }
 }
